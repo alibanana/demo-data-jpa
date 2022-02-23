@@ -11,9 +11,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Version;
 import java.math.BigInteger;
 
 @Data
@@ -21,7 +23,11 @@ import java.math.BigInteger;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "products")
+@Table(name = "products",
+  indexes = {
+    @Index(name = "products_product_name_shop_id_index",
+      columnList = "product_name, shop_id")
+})
 public class Product {
 
   @Id
@@ -42,4 +48,8 @@ public class Product {
   @OneToOne
   @JoinColumn(name = "shop_id")
   Shop shop;
+
+  @Version
+  @Column
+  Long version;
 }

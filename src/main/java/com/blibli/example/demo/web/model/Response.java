@@ -19,4 +19,17 @@ public class Response<T> {
   private T data;
 
   private Map<String, List<String>> errors;
+
+  private Pagination pagination;
+
+  @Data
+  @Builder
+  @NoArgsConstructor
+  @AllArgsConstructor
+  public static class Pagination {
+
+    private Integer page;
+    private Long size;
+    private Long totalItems;
+  }
 }

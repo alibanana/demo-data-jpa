@@ -1,5 +1,6 @@
 package com.blibli.example.demo.web.model.product;
 
+import com.blibli.example.demo.validation.ShopExists;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,5 +29,6 @@ public class UpdateProductRequest {
   Integer stock;
 
   @NotNull
+  @ShopExists
   String shopId;
 }
